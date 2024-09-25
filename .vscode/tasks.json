@@ -3,6 +3,19 @@
     "version": "2.0.0",
     "tasks": [
         {
+            "label": "build-sandbox-one_to_ten",
+            "command": "dotnet",
+            "type": "process",
+            "args": [
+                "build",
+                "${workspaceFolder}/sandbox/one_to_ten/one_to_ten.csproj",
+                "/property:GenerateFullPaths=true",
+                "/consoleloggerparameters:NoSummary"
+            ],
+            "problemMatcher": "$msCompile"
+        },
+
+        {
             "label": "build-sandbox-Sandbox2",
             "command": "dotnet",
             "type": "process",
