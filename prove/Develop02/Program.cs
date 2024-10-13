@@ -1,9 +1,13 @@
 using System;
+using System.ComponentModel.Design;
 
-class Program
+public class Program
 {
     static void Main(string[] args)
     {
-        Console.WriteLine("Hello Develop02 World!");
+        Menu showmenu = new Menu();
+        showmenu.HandleSelection();
+        // Get the different function according to user_choice
+
     }
 }
