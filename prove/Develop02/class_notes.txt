@@ -1,0 +1,23 @@
+dotnet build "name for the new file"
+dotnet new console --use-program-main : Use the main program template
+
+
+
+10/14 Mon.
+Q: What difference between a class and an object?
+
+            Journal.cs    Entry.cs
+- Class          1           1 
+- Object         1           3
+
+A: A class is a blueprint or a template that defines the properties and methods of an object. 
+   So,  there is only one class, but multiple objects can be created from that class. 
+
+## To create a Class Constructor,  use the following syntax:
+ 
+public Bin(string demonination, float value, int quantity);
+Ex.  public Bin = new("quarters", (float)0.25, 40)  // Using (float)0.25 makes 0.25 from  a double to a float .
+
+
+
+
