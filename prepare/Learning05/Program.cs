@@ -10,10 +10,10 @@ class Program
 
         // Test for Square class, inherited and morphed from the Shape class
         Square square1 = new Square(5, "blue");
-        string color = square1.GetColor();
-        double area = square1.GetArea();
-        Console.WriteLine("Square 1 Color: " + color);
-        Console.WriteLine("Square 1 Area: " + area);
+        string color1 = square1.GetColor();
+        double area1 = square1.GetArea();
+        Console.WriteLine("Square 1 Color: " + color1);
+        Console.WriteLine("Square 1 Area: " + area1);
 
         // Test for Rectangle class, inherited and morphed from the Shape class
         Rectangle rectangle2 = new Rectangle(5, 4, "pink");
@@ -35,8 +35,12 @@ class Program
 
         foreach (Shape shape in shapes) // remember to state the datatype of the iterate variable
         {
-            Console.WriteLine(shape.GetColor());
-            Console.WriteLine(shape.GetArea());
+            string color = shape.GetColor();
+            double area = shape.GetArea();
+
+            Console.WriteLine($"The {color} shape has an area of {area}");
+
+
         }
     }
 }

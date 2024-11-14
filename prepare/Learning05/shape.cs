@@ -18,5 +18,6 @@ public abstract class Shape
     }
 
     public abstract double GetArea();
+    // Instead of using virtual for the GetArea() function, we use abstract. Since it doesn't have a default shape for this class, we should use abstract that the child classes must declare the equation of GetArea() function by itself.
 
 }
