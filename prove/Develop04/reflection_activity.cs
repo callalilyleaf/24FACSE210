@@ -2,7 +2,13 @@ using System.Diagnostics;
 
 public class Reflection : Activity
 {   
-    
+    public Reflection
+    {
+        private new string _activityName = "Reflection";
+        private string _explanation = "This activity will help you reflect on times in your life when you hae shown strength and resilience. This will help you recognize the power you have and how you can use it in other aspects of your life.\n";
+        private new string _endingMessage = $"Well done!!\nYou have completed another {_lasttime} seconds of Reflection Activity.\n";
+    }
+
     List<string> reflectionPrompt = new List<string>
     {"Think of a time when you stood up for someone else.",
     "Think of a time when you did something really difficult.",

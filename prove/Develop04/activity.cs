@@ -1,15 +1,25 @@
 using System;
 using System.IO.Compression;
+using System.Runtime.CompilerServices;
 using System.Security.Authentication.ExtendedProtection;
 using System.Security.Cryptography.X509Certificates;
 
 public class Activity
 {
-    protected int lasttime = 0; // in second
-    private string _startingMessage = "Welcome to the Mindfulness activity!";
-    private string _endingMessage = "Well done!!\nYou have completed another {lasttime} seconds of mindfulness practice.\n";
+    protected static int _lasttime; // in second
+    protected string _activityName;
+    protected string _startingMessage;
+    protected string _endingMessage;
 
-    public int timer(int lasttime) // Set the duration for the activity time
+    public Activity() // Constructor for other activities
+    {   
+        _startingMessage = $"Welcome to the {_activityName} activity!";
+        _lasttime = timer()
+        _endingMessage = $"Well done!!\nYou have completed another {_lasttime} seconds of mindfulness practice.\n";
+    }
+    
+
+    public void timer() // Set the duration for the activity time
     {   
         Console.WriteLine("How long, in seconds, would you like for this session? ");
         bool pick = false;
@@ -17,7 +27,7 @@ public class Activity
         {
             if (int.TryParse(Console.ReadLine(), out int number))
             {   
-                lasttime = number;
+                int lasttime = number;
                 pick = true;
             }
             else
@@ -25,12 +35,12 @@ public class Activity
                 Console.WriteLine("Please enter a valid choice with number input.");
             }
         }
-        return lasttime;
+        _lasttime = number;
     }
     
     public void spinner() // print out the spinner animation    
     {   
-        for (int i = lasttime; i > 0; i--)
+        for (int i = _lasttime; i > 0; i--)
             {
                 Console.Write("-");
                 Thread.Sleep(500);
