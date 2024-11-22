@@ -6,7 +6,6 @@ using System.Globalization;
 
 
 class Reference{
-    private int index;
     private string _reference;
     private string _verse;
     
