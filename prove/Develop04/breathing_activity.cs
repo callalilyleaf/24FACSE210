@@ -3,28 +3,33 @@ using System.Diagnostics;
 public class Breathing : Activity
 {    
     public Breathing() // set the welcome message and exit message
-    {
-        private new string _activityName = "Breathing";
-        private string _explanation = "This activity will help you relax by walking your through breathing in and out slowly. Clear your mind and focus on your breathing.\n";
-        private new string _endingMessage = $"Well done!!\nYou have completed another {_lasttime} seconds of Breathing Activity.\n";
+    {   
+        _activityName = "Breathing";
+        _explanation = "This activity will help you relax by walking your through breathing in and out slowly. Clear your mind and focus on your breathing.";
+    }
+    
+    public void BreathInOut() // print out the breathing animation
+    {   
+        DateTime startTime = DateTime.Now;
+        DateTime endTime = startTime.AddSeconds(_lasttime);
+
+        Console.Clear();
+        Console.WriteLine("Get Ready...");
+        Spinner(2);
+
+        while (DateTime.Now < endTime)
+        {
+            Console.WriteLine("\nBreath in...");
+            Spinner(5);
+
+            Console.WriteLine("Now breath out...");
+            Spinner(5);
+        }
 
     }
 
-    private int breathtime = timer(int lasttime) : base(lasttime); //Set the time for inhaling and exhaling
-
     
-    public void breathIn() // print out the breathing animation
-    {
-        // an animation that gets higher, ask AI
-    }
 
-
-    
-    public void breathOut() // print out the breathing animation
-    
-    {
-        // an animation that gets lower, ask AI
-    } 
 
 
     

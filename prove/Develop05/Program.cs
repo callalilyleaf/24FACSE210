@@ -14,6 +14,10 @@ class Program
         5. Record Goals
         6. Quit
         > ";
+
+        Console.WriteLine(menu);
+
+        
     }
 
     

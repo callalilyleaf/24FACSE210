@@ -1,24 +1,52 @@
 using System.Diagnostics;
+using System.Drawing.Text;
 
 public class Listing : Activity
 {
     public Listing() 
-    {
-        private new string _activityName = "Listing";
-        private string _explanation = "This activity will help you reflect on the good things in your life by having you list as many things as you can in a certain area.\n";
-        private new string _endingMessage = $"Well done!!\nYou have completed another {_lasttime} seconds of Listing Activity.\n";
+    {   
+        _activityName = "Listing";
+        _explanation = "This activity will help you reflect on the good things in your life by having you list as many things as you can in a certain area.";
     }    
-           
-        public void getanswerLen()
-        {   
-            Console.WriteLine("How many answers do you have?");
-            private int answerLen = int.Parse(Console.ReadLine());
-        }
+        
+    List<string> listPrompts = new List<string>
+    {
+        "Who are people that you appreciate?",
+        "What are personal strengths of yours?",
+        "Who are people that you have helped this week?",
+        "When have you felt the Holy Ghost this month?",
+        "Who are some of your personal heroes?"
+    };
 
-        List<string> listPrompts = new List<string>();
-        public void listAnswer(List list, int answerLen)
+
+    public void ListingAnswers()
+    {
+        Random random = new Random(); 
+        int randomIndex = random.Next(0, listPrompts.Count);
+
+        Console.Clear();
+        Console.WriteLine("Get ready...");
+        Spinner(3);
+        Console.WriteLine("\nList as many responses you can to the following prompt: ");
+        Console.WriteLine($" --- {listPrompts[randomIndex]} --- \n");
+        Console.WriteLine("You may begin in: ");
+        Counter();
+
+
+        DateTime startTime = DateTime.Now;
+        DateTime endTime = startTime.AddSeconds(_lasttime);
+        int counter = 0;
+
+        do
         {
-            // 
+            Console.Write("> ");
+            Console.ReadLine();
+            counter++;
         }
+        while(DateTime.Now < endTime);
+
+        Console.WriteLine($"You listed {counter} responses in {_lasttime} seconds.");
+        Thread.Sleep(4000);
+    }
     
 }
