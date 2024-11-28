@@ -1,0 +1,3 @@
+0
+Simon
+SimpleGoal:Go to the temple, do ordinance, 50, False

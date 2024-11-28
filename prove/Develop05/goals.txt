@@ -1,0 +1,5 @@
+250
+Cool Kid
+SimpleGoal:simple name 1, simple desc 1, 50, False
+EternalGoal:eternal name 1, eternal desc 1, 60
+ChecklistGoal:checklist name 1, checklist desc 1, 70, 200, 3, 0

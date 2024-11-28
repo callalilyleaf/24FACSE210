@@ -7,9 +7,8 @@ using System.Security.Cryptography.X509Certificates;
 using System.Xml.Serialization;
 
 // Stretches:
-// 1. Having a circle animation
-// 2. No duplicated prompts in reflection activity
-// 3. Handle the invalid menu input from the user
+// 1. No duplicated prompts in reflection activity
+// 2. Handle the invalid menu input from the user
 
 // Errors:
 // 1. The breathing activity: finished
