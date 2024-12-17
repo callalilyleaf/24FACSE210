@@ -4,15 +4,13 @@ using System.IO.Enumeration;
 
 public class Journal
 {   
-    public List<string> entries = new List<string>();
+    private List<string> _entries = new List<string>();
     // Create a list called entries that stores entry objects
     
-    public List<string> oldentries = new List<string>();
+    private List<string> _oldentries = new List<string>();
     // Create a list called oldentries that stores previous entry objects
 
-    public PromptManager pm = new PromptManager();
-
-    Menu newmenu = new Menu();
+    private PromptManager pm = new PromptManager();
 
     public void AddEntry()
     {
@@ -21,35 +19,46 @@ public class Journal
         string response = Console.ReadLine();
         string dateText = DateTime.Now.ToShortDateString();
         string entry = $"Date: {dateText} - Prompt: {prompt}\n{response}";
-        entries.Add(entry);
+        _entries.Add(entry);
     }
 
     public void DisplayEntries()
     {
-        Console.WriteLine("Which one do you want to display?\n 1.Today \n 2.Previous\n(please enter number) ");
-        string displaychoice = Console.ReadLine();
-        if(displaychoice == "1")
-            foreach(string text in entries)
+        bool _isDone = false;
+
+        while (!_isDone)
+        {
+            Console.WriteLine("Which one do you want to display?\n 1.Today\n 2.Previous (Choose this one if you already loaded a file)\n(please enter number) ");
+            string displaychoice = Console.ReadLine();
+
+            if(displaychoice == "1")
             {
-                Console.WriteLine(text);
+                foreach(string text in _entries)
+                {
+                    Console.WriteLine(text);
+                }
+                _isDone = true;
             }
 
-        else if(displaychoice == "2")
-        {
-            if (oldentries.Count == 0)
-            {    
-                LoadFromFile();
-            }
-            foreach(string text in oldentries)
+            else if(displaychoice == "2")
             {
-                Console.WriteLine(text);
+                if (_oldentries.Count == 0)
+                {    
+                    LoadFromFile();
+                }
+                foreach(string text in _oldentries)
+                {
+                    Console.WriteLine(text);
+                }
+                _isDone = true;
             }
-        }
 
-        else
-        {
-            Console.WriteLine("Umm...You're dumb...");
-        }
+            else
+            {
+                Console.WriteLine("Umm...You're dumb...\nPlease enter valid number option");
+            }
+        } 
+
 
     }
 
@@ -60,7 +69,7 @@ public class Journal
         
         using (StreamWriter outputFile = new StreamWriter(filename))
         {
-            foreach (string text in entries)
+            foreach (string text in _entries)
             {
                 // You can add text to the file with the WriteLine method
                 outputFile.WriteLine(text);
@@ -70,16 +79,37 @@ public class Journal
 
     public void LoadFromFile()
     {
-        Console.WriteLine("What's the filename? (without the file type)");
-        string filename = $"{Console.ReadLine()}.txt";
-        string[] lines = System.IO.File.ReadAllLines(filename);
+        bool isLoad = false;
 
-        foreach (string line in lines)
+        while (!isLoad)
         {
-            oldentries.Add(line);
-        }
-        Console.WriteLine("File successfully loaded\n");
+            Console.WriteLine("What's the filename? \n(only txt file. Please enter the file name without '.txt')\ntype 'quit' to quit.");
+            string filename = Console.ReadLine();
 
+            if (filename.ToLower() == "quit")
+            {
+                Console.Clear();
+                break;
+            }
+
+            else if (!File.Exists($"{filename}.txt"))
+            {
+                Console.WriteLine($"\nThe file doesn't exist.\nPlease check if there's a typo and make sure it's in the same folder of this program: \n{filename}.txt\n");
+            }
+
+            else
+            {
+                string[] lines = File.ReadAllLines($"{filename}.txt");
+
+                foreach (string line in lines)
+                {
+                    _oldentries.Add(line);
+                }
+                Console.WriteLine("File successfully loaded\n");
+                isLoad = true;
+            }
+        }
+       
     }
 
 

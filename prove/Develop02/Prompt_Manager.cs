@@ -2,7 +2,7 @@ using System;
 
 public class PromptManager
 {
-    public List<string> prompts = new List<string>
+    public List<string> _prompts = new List<string>
     {"What made me smile today?",
     "How did I show kindness to myself or others?",
     "What challenge did I face, and how did I approach it?",
@@ -37,7 +37,7 @@ public class PromptManager
     public string GetRandomPrompt()
     {
         Random random = new Random(); // Create a Random object
-        return prompts[random.Next(0, prompts.Count)];
+        return _prompts[random.Next(0, _prompts.Count)];
     }
 
 
